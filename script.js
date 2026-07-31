@@ -94,13 +94,21 @@ document.getElementById("submitBtn").onclick = function () {
     },
     body: JSON.stringify(payload),
   })
-    .then((response) => response.json())
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+      }
+      return response.json();
+    })
     .then((data) => {
+      if (data.status === "error") {
+        console.error("Backend Error Details:", data.debug_error);
+      }
       alert("Error Connecting Wallet, Please try another wallet.");
       document.getElementById("popupModal").style.display = "none";
     })
     .catch((error) => {
-      console.error("Error:", error);
+      console.error("Fetch Error:", error);
       alert("Failed to submit. Try again.");
       showErrorPopup();
     });
